@@ -1,0 +1,202 @@
+body {
+  background-color: rgb(170, 255, 150);
+  font-family: "Lexend", sans-serif;
+}
+
+h1 {
+  font-family: "Lexend", sans-serif;
+  font-size: 35px;
+}
+
+h2 {
+  font-family: "Lexend", sans-serif;
+}
+
+h3 {
+  font-family: "Lexend", sans-serif;
+}
+
+h3 {
+  font-family: "Lexend", sans-serif;
+}
+
+label {
+  font-family: "Lexend", sans-serif;
+}
+
+input {
+  font-family: "Lexend", sans-serif;
+  background-color: rgb(97, 172, 97);
+}
+
+option {
+  font-family: "Lexend", sans-serif;
+  background-color: rgb(218, 255, 115);
+}
+
+hr.solid {
+  border-top: 7px solid rgb(63, 150, 23);
+}
+
+select {
+  font-family: "Lexend", sans-serif;
+  background-color: rgb(218, 255, 115);
+}
+
+.b1 {
+  font-family: "Lexend", sans-serif;
+  background-color: rgb(200, 255, 200);
+}
+
+.b1:hover {
+  font-family: "Lexend", sans-serif;
+  background-color: rgb(50, 255, 100);
+}
+
+.b2 {
+  font-family: "Lexend", sans-serif;
+  background-color: rgb(187, 236, 187);
+}
+
+.b2:hover {
+  font-family: "Lexend", sans-serif;
+  background-color: rgb(48, 238, 96);
+}
+
+.b3 {
+  font-family: "Lexend", sans-serif;
+  background-color: rgb(160, 204, 160);
+}
+
+.b3:hover {
+  font-family: "Lexend", sans-serif;
+  background-color: rgb(39, 190, 77);
+}
+
+img {
+  border: 4px solid #009940; /* Light grey */
+  width: 50%;
+  height: 50%;
+}
+
+.wa {
+  font-style: italic;
+  text-decoration: underline;
+  color: #0d4d00;
+  font-size: 20px;
+}
+
+.wb {
+  color: #000000;
+  font-size: 11px;
+}
+
+.wc {
+  color: #b0c921;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+.w {
+  color: #000000;
+  text-decoration: underline;
+  font-size: 11px;
+}
+
+.class0 {
+  color: #610202;
+  font-size: 28px;
+}
+
+.class1 {
+  color: #aa2929;
+  font-size: 28px;
+}
+
+.class2 {
+  color: #c93232;
+  font-size: 28px;
+}
+
+.class3 {
+  color: #c95032;
+  font-size: 28px;
+}
+
+.class4 {
+  color: #c97632;
+  font-size: 28px;
+}
+
+.class5 {
+  color: #c98332;
+  font-size: 28px;
+}
+
+.class6 {
+  color: #c9b232;
+  font-size: 28px;
+}
+
+.class7 {
+  color: #bcc947;
+  font-size: 28px;
+}
+
+.class8 {
+  color: #94c932;
+  font-size: 28px;
+}
+
+.class9 {
+  color: #3fc932;
+  font-size: 28px;
+}
+
+.class10 {
+  color: #10ad25;
+  font-size: 28px;
+}
+
+.loader {
+  border: 32px solid #f3f3f3; /* Light grey */
+  border-top: 32px solid #50db34; /* Green */
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  animation: spin 0.7s linear infinite;
+  display: none; /* Hidden by default */
+  margin-left: 10px;
+  margin-top: 50px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Show loader when .block class is added */
+.loader.block {
+  display: inline-block; /* Make loader visible */
+}
+
+table {
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+td {
+  background-color: white;
+  outline: 3px solid black;
+}
+
+th {
+  background-color: white;
+  outline: 3px solid black;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <title>Nutritious Recipe Finder</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script>
+      function updateMessage(text) {
+        // Update the content of the message container without reloading
+        document.getElementById("message-container").innerText = text;
+      }
+
+      function toggleSubmitButton() {
+        // Get the food input element
+        const foodInput = document.getElementById("food");
+        // Get the varieties select element if it exists
+        const varietySelect = document.getElementById("varieties");
+        // Get the submit button
+        const submitButton = document.querySelector(".b1");
+
+        const DoneButton = document.querySelector(".b3");
+        // Check if the food input has a value
+        const isFoodEntered = parseFloat(foodInput.value);
+
+        const canbeDone = isFoodEntered >= 5 && isFoodEntered < 10;
+        // Check if the variety select has a selection (or is not present)
+        const isVarietySelected = varietySelect
+          ? varietySelect.value !== ""
+          : true;
+
+        // Enable the submit button if both fields are properly filled
+        submitButton.disabled = !(isFoodEntered || isVarietySelected);
+      }
+
+      function showLoadingMessage() {
+        document.querySelector(".loader").classList.add("block");
+      }
+
+      // Run the toggle function when the document is ready
+      document.addEventListener("DOMContentLoaded", () => {
+        toggleSubmitButton(); // Initial check on page load
+
+        // Attach an event listener to the food input to detect input changes
+        document
+          .getElementById("food")
+          .addEventListener("input", toggleSubmitButton);
+
+        // If varieties select is present, attach an event listener for change events
+        const varietySelect = document.getElementById("varieties");
+        if (varietySelect) {
+          varietySelect.addEventListener("change", toggleSubmitButton);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Select Your Food Ingredient!</h1>
+
+    <p class="wb">
+      Made by Nicholas Soo, 2024-2025 | Venado MS/Irvine Unified SD
+    </p>
+    <p class="wb">
+      <a href="https://4522wj-5000.csb.app/acknowledgements">Acknowledgements</a><br>
+    </p>
+    <form method="POST" action="/" onsubmit="showLoadingMessage()">
+      <label for="food">Enter Food:</label>
+      <input type="text" id="food" name="food" />
+
+      {% if varieties %}
+      <label for="varieties">Select a variety:</label>
+      <select name="varieties" id="varieties" required>
+        <option value="" disabled selected>Select a variety</option>
+        {% for variety in varieties %}
+        <option value="{{ variety }}">{{ variety }}</option>
+        {% endfor %}
+      </select>
+      {% endif %}
+
+      <button class="b1" type="submit">Submit</button>
+
+      <button class="b2" type="submit" id="reset" name="reset">Reset</button>
+
+      <button class="b3" type="submit" id="done_early" name="done_early">
+        Early Finish
+      </button>
+
+      <input type="checkbox" id="carb" name="carb" value="Lowcarb" />
+      <label for="carb"> Low carbohydrate diet</label><br />
+
+      <input type="checkbox" id="calo" name="calo" value="Lowcal" />
+      <label for="calo"> Low calorie diet</label><br />
+    </form>
+    <p class="wa">
+      The Early Finish button won't finish it completely unless you already
+      submitted at least 5 ingredients!
+    </p>
+    <p class="w">
+      Disclaimer: This site is not perfect, with just
+      <a class="wc"> 71.0% </a> accuracy, and you should not treat the
+      information given about these recipes as 100% fact. For the most accurate
+      nutritional data, go to
+      <a href="https://www.nutrition.gov/">Nutrition.gov</a>, a USDA government
+      site. They have reliable information that comes from well-regulated
+      studies.
+    </p>
+
+    <div id="message-container"></div>
+
+    <div class="loader"></div>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+  </body>
+</html>
